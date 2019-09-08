@@ -25,11 +25,34 @@ import (
     "fmt"
 )
 
-func TestShuffle(t *testing.T) {
+func getArray(size int) []int {
+    var array []int
+
+    for i:=0; i<size; i++ {
+        array = append(array, (i+1))
+    }
+
+    return array;
+}
+
+// Item the type of the Set
+type Item generic.Type
+
+// Generic Reverse
+func Reverse (type  Element) (s []Element) {
+    first := 0
+    last := len(s) - 1
+    for first < last {
+        s[first], s[last] = s[last], s[first]
+        first++
+        last--
+    }
+}
+
+func Test_ReverseInt(t *testing.T) {
     var array []int
 
     array = getArray(10)
-    shuffle List(array)
 
     fmt.Printf("%v\n", array);
 }
