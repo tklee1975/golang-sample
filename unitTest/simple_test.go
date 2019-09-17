@@ -1,4 +1,4 @@
-package mypack
+package unit_test
 
 /**
  * # How to Run
@@ -6,13 +6,13 @@ package mypack
  * >go test mypack_test.go
  *
  * Run all with detail
- * >go test basic/utest/mypack_test.go  -v
+ * >go test basic/utest/simple_test.go  -v
  *
  * Run specific test
- * >go test basic/utest/mypack_test.go  -v -run Simple
+ * >go test basic/utest/simple_test.go  -v -run Simple
  *
  * Benchmark test
- * >go test basic/utest/mypack_test.go -v -bench=.
+ * >go test unitTest/simple_test.go -v -bench=.
  *
  * # Reference
  * - https://golang.org/pkg/testing/
@@ -34,7 +34,7 @@ func Add(a int, b int) int {
 }
 
 func TestAdd(t *testing.T) {
-    if Add(1, 2) == 4 {
+    if Add(1, 2) == 3 {
         t.Log("Add.Add Pass")
     } else {
         t.Errorf("Add.Add Fail")
@@ -44,9 +44,21 @@ func TestAdd(t *testing.T) {
 func BenchmarkAdd(b *testing.B) {
     for i := 0; i < b.N; i++ {
         Add(1, 2)
+        //v := 1 * 1
+        //b.Log("value=", v)
     }
 }
 
+func Benchmark_BenchTest1(b *testing.B) {
+    fmt.Println("** BenchTest1")
+}
+
+func Benchmark_Hello(b *testing.B) {
+    for i := 0; i < b.N; i++ {
+        //fmt.Sprintf("hello")
+        fmt.Sprintf("hello")
+    }
+}
 
 func TestTimeConsuming(t *testing.T) {
     if testing.Short() {
